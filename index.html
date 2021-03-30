@@ -11,7 +11,7 @@
 			<h1>Recherche de Pokémon</h1>
 
 			<p id="explication">Cette page permet de rechercher des pokémons via l'API publique de <a href="https://pokeapi.co/" target="_blank">pokeapi.co</a>.<br>
-			Choisir une categorie et saisir un mot clé pour rechercher les informmations correspondantes, et enregistrer vos recherches favorites pour les retrouver facilement.</p>
+			Saisir le nom d'un pokémon pour rechercher les informations correspondantes, et enregistrer vos recherches favorites pour les retrouver facilement.</p>
 		</header>
 		<hr>
 
@@ -27,12 +27,7 @@
 			<section id="section-recherche">
 				<div id="bloc-recherche">
 					<!-- Champ de recherche -->
-					<select name="categorie" id="categorie">
-						<option value="volvo">Volvo</option>
-						<option value="saab">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
+				
 					<input type="text" placeholder="Que cherchez-vous ?" id="textInput"/>
 
 					<!-- Boutons -->
@@ -59,10 +54,6 @@
 					<img src='images/attente-ajax.gif' alt="GIF Attente de résultats" width=50 />
 				</div>
 				<div id="bloc-resultats">
-					<p class="res">Résultat 1 ...</p>
-					<p class="res">Résultat 2 ...</p>
-					<p class="res">Résultat 3 ...</p>
-					<p class="info-vide">( &empty; Aucun résultat trouvé )</p>
 				</div>
 			</section>
 
