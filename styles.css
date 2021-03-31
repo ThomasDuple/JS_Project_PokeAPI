@@ -63,9 +63,6 @@ p#explication {
 	flex-direction: row;
 }
 
-#bloc-recherche > input {
-}
-
 #bloc-recherche>input[type=text],
 #bloc-recherche>button {
 	display: block;
@@ -102,7 +99,8 @@ p#explication {
 
 #bloc-recherche>button.btn_clicable:hover {
 	cursor: pointer;
-	border: 1px solid white;
+	border: 4px solid white;
+	padding: calc(0.8em - 3px);
 }
 
 #bloc-recherche>button.btn_clicable:active {
@@ -174,4 +172,36 @@ p#explication {
 	#section-favoris {
 		flex: 0;
 	}
+}
+
+#resultat {
+	border: 0.3em solid var(--main-accent);
+	width: calc(100% - 30px - 0.6em);
+	background-color: var(--text-color);
+	margin-top: 15px;
+	padding: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#resultat h1 {
+	margin: 0;
+}
+
+#resultat * {
+	color: var(--main-accent);
+}
+
+#resultat > img {
+	height: 100%;
+	border: 1px solid #000;
+}
+
+#resultat progress { -webkit-appearance: none; }
+#resultat progress::-webkit-progress-bar { background-color: var(--text-color); }
+#resultat progress::-webkit-progress-value { background-color: var(--main-accent); }
+#resultat progress::-webkit-progress-inner-element { border: 2px solid var(--background); }
+#resultat progress::-moz-progress-bar {
+	background-color: var(--main-accent);
 }

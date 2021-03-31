@@ -1,23 +1,31 @@
 function recherche(){
     let input = $( "#textInput" ).val();
-    $.ajax({url: "https://pokeapi.co/api/v2/pokemon/"+input, success: function(result){
-        //Abilities
-        console.log(result);
-        //result.abilities.forEach(element => $("#abilities").append(createP(element.ability.name)));
-        for(const i in result){
-          let element = document.createElement("h2");
-          element.innerHTML = i;
-          console.log(element)
-          $("#bloc-resultats").append(element);
+    $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon/"+input,
+        success: function (result) {
+            $("#bloc-resultats > p.info-vide").hide();
+            $("#resultat").show();
+            //Abilities
+            console.log(result);
+            //result.abilities.forEach(element => $("#abilities").append(createP(element.ability.name)));
+            setData(result);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            if(xhr.status==404) {
+                $("#bloc-resultats > p.info-vide").show();
+                $("#resultat").hide();
+            }
         }
-      }});
+    });
 }
 
-function createP(text, class_name = ""){
-  return "<p class=\"" + class_name + "\">" + text + "</p>"
-}
+function setData(data) {
+    $("#sprite").attr('src', data.sprites.front_default);
 
-$("#textInput").on('input', refreshFavBtn);
+    data.stats.forEach(st => {
+        $("#stat_" + st.stat.name).val(st.base_stat);
+    });
+}
 
 function refreshFavBtn() {
     const search = $("#textInput").val();
@@ -81,6 +89,7 @@ function removeFromFavorite(item = null) {
 function useFavorite(item) {
     $("#textInput").val(item);
     refreshFavBtn();
+    recherche();
 }
 
 function refreshFavList() {
@@ -110,6 +119,10 @@ function refreshFavList() {
 if (localStorage.getItem("favorites") === null) {
     localStorage.setItem("favorites", JSON.stringify([]));
 }
+
+$("#textInput").on('input', refreshFavBtn);
+$("#bloc-resultats > p.info-vide").hide();
+$("#resultat").hide();
 
 refreshFavBtn();
 refreshFavList();
