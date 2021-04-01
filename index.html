@@ -22,6 +22,10 @@
 			</li>
 		</template>
 
+		<template id="templateType">
+			<span class="type"></span>
+		</template>
+
 		<main id="conteneur">
 			<!-- Section de recherche (avec résultats) -->
 			<section id="section-recherche">
@@ -49,10 +53,34 @@
 					</button>
 				</div>
 
+				<div id="bloc-gif-attente">
+					<img src='images/attente-ajax.gif' alt="GIF Attente de résultats" width=50 />
+				</div>
+				
 				<div id="bloc-resultats">
 					<p class="info-vide">( &empty; Aucun Pokémon trouvé )</p>
 					<div id="resultat">
-						<img id="sprite" src="images/attente-ajax.gif" alt="sprite">
+						<div>
+							<div id="header">
+								<h1 id="pkmn_name"></h1>
+								<h3>, n°<span id="pkmn_id"></span></h3>
+							</div>
+							<img id="sprite" src="images/attente-ajax.gif" alt="sprite">
+							<div>
+								<h1>Types</h1>
+								<div id="type_list">
+								</div>
+							</div>
+						</div>
+
+						<div class="infos">
+							<h1>Informations</h1>
+							<h2 for="info_height">Taille</h2>
+							<h3 id="info_height"></h3>
+							<h2 for="info_weight">Poids</h2>
+							<h3 id="info_weight"></h3>
+						</div>
+
 						<div class="stats">
 							<h1>Statistiques</h1>
 							<table>
