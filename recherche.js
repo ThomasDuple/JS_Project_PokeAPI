@@ -2,7 +2,7 @@ function recherche(){
     let input = $( "#textInput" ).val();
     $("#bloc-gif-attente").show();
     $.ajax({
-        url: "https://pokeapi.co/api/v2/pokemon/"+input,
+        url: "https://pokeapi.co/api/v2/pokemon/"+input.toLowerCase(),
         success: function (result) {
             $("#bloc-gif-attente").hide();
             $("#bloc-resultats > p.info-vide").hide();
@@ -65,7 +65,7 @@ function refreshFavBtn() {
 
         const fav = JSON.parse(localStorage.getItem("favorites"));
 
-        if (fav.indexOf(search) == -1) {
+        if (fav.indexOf(search.toLowerCase()) == -1) {
             btn.attr("onclick", "addToFavorite()");
             $('img[alt="Etoile pleine"]').hide();
             $('img[alt="Etoile vide"]').show();
@@ -81,7 +81,7 @@ function refreshFavBtn() {
 function addToFavorite() {
     const search = $("#textInput").val();
     const fav = JSON.parse(localStorage.getItem("favorites"));
-    fav.push(search);
+    fav.push(search.toLowerCase());
     localStorage.setItem("favorites", JSON.stringify(fav));
     refreshFavBtn();
     refreshFavList()
